@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            background-image: url("C:/Users/DELL/Downloads/pexels-element5-1470171.jpg");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            color: #242452;
+        }
+        #navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent; 
+    color: white;
+    display: flex;
+    z-index: 1000;
+    text-align: center;
+    transition: background-color 0.3s; 
+}
+
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo img {
+    height: 45px;
+    margin-right: 0;
+}
+
+.navbar-logo span {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.navbar-links {
+    flex: 1;
+    text-align: right;
+}
+
+.navbar-links li {
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+
+.navbar-links li a{
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+}
+.navbar-links li::after{
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: #F9C30D;
+    display: block;
+    margin: auto;
+    transition: .5s;    
+}
+.navbar-links li:hover::after{
+    width: 100%;
+}
+.donate-button {
+    background-color: transparent;
+    color: white;
+    border: 1.5px solid white;
+    padding: 5px 15px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    
+}
+
+.donate-button:hover {
+    background-color: #F9C30D;
+    transform: scale(1.05);
+}
+
+    .last {
+    position: relative;
+    height: 70vh;
+    background: url(index\ images/tree\ planting\ 2.jpg) right no-repeat, url(index\ images/tree\ planting\ 1.jpg) left no-repeat ;
+}
+
+header .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(1, 31, 53, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: last baseline;
+}
+
+header .centered-message {
+    text-align: center;
+    color: #fff;
+    padding-bottom: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: rgba(35, 143, 143, 0.65);
+}
+
+header .centered-message h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+header .centered-message p {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+header .centered-message button {
+    background-color: #F3F5E5;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+header .centered-message button:hover {
+    background-color: #f44336;
+    transform: scale(1.05);
+    text-size-adjust: 18px;
+}
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px;
+            padding: 30px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .donation-amount, .billing-info {
+            width: 100%;
+        }
+        .amount-label, .custom-amount-label, .billing-form label, .checkbox-group label {
+            color: #242452;
+            font-size: 18px;
+            text-align: center;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .divider {
+            width: 80%;
+            height: 2px;
+            background: #ccc;
+            margin: 10px auto;
+        }
+        .suggested-amounts {
+            margin: 10px 0;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .amount-btn {
+            background-color: #242452;
+            border: 2px solid #242452;
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .amount-btn:hover {
+            background-color: whitesmoke;
+            color: #242452;
+        }
+        input[type="number"], .billing-form input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 300px;
+            box-sizing: border-box;
+            margin: 10px 0;
+        }
+        .billing-form {
+            width: 100%;
+        }
+        .billing-form label {
+            display: block;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        .billing-form input {
+            width: 100%;
+            box-sizing: border-box;
+            margin: 10px 0;
+            max-width: 100%;
+        }
+        .checkbox-group {
+            margin: 10px 0;
+            text-align: center;
+        }
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        .submit-btn {
+            background-color: #242452;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: whitesmoke;
+            color: #242452;
+        }
+        .addition {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+        .text-box {
+            width: 100%;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        .underline-animation {
+            display: inline-block;
+            position: relative;
+            font-weight: bold;
+            font-size: 40px;
+        }
+        .underline-animation::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 5px;
+            background-color: #c91010;
+            transform: scaleX(0);
+            transform-origin: bottom left;
+            transition: transform 1s ease-out;
+        }
+        .underline-animation.show-underline::after {
+            transform: scaleX(1);
+        }
+        .image-box {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .image-box img {
+            width: 90%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+
+
+
+        .last {
+        position: relative;
+        height: 70vh;
+        background: url("lastimage.png") center no-repeat;
+    }
+    
+    header .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(1, 31, 53, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: last baseline;
+    }
+    
+    header .centered-message {
+        text-align: center;
+        color: white;
+        padding-bottom: 50px;
+        padding-left: 20px;
+        padding-right: 20px;
+        background-color: rgba(250,250,250,0.15)
+        
+    }
+    
+    header .centered-message h1 {
+        font-size: 48px;
+        margin-bottom: 10px;
+    }
+    
+    header .centered-message p {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    header .centered-message button {
+        background-color: #F3F5E5;
+        color: black;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+    }
+    
+    header .centered-message button:hover {
+        background-color: #f44336;
+        transform: scale(1.05);
+        text-size-adjust: 18px;
+
+    }
+
+    footer {
+    background-color: #011F35;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.footer-links li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.social-icons {
+    margin-top: 20px;
+}
+
+.social-icon {
+    color: white;
+    margin: 0 10px;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    color: #f44336;
+}
+
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="navbar-logo">
+            <img src="index images/logo.png" alt="Earthly.in Logo">
+            <span>Earthly.in</span>
+        </div>
+        <ul class="navbar-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="create an impact.html">Create an Impact</a></li>
+            <li><a href="what we do.html">What We Do</a></li>
+            <li><a href="earthly events.html">Earthly Events</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="review.html">Reviews</a></li>
+            <li><a href="contact us.html">Contact Us</a></li>
+        </ul>
+        <button class="donate-button">DONATE</button>
+    </nav>
+    <header class="last">
+        <div class="overlay">
+            <div class="centered-message">
+                <h1>YOUR Donation HELP US!</h1>
+                <p>Hey HERO! You contributed to us by visiting our site.</p>
+                <button>Know More!</button>
+            </div>
+        </div>
+   </header>
+
+   
+   
+    <div class="container">
+        <div class="addition">
+            <h1><b>You can help protect India’s people and nature by making a tax-deductible donation to The Nature Conservancy.</b></h1>
+            <h2>When you donate, you’re supporting effective solutions to big environmental challenges—an investment in the future of our planet.</h2>
+        </div>
+        <div class="donation-amount">
+            <span class="amount-label"><b>Donation Amount</b></span>
+            <div class="divider"></div>
+            <div class="suggested-amounts">
+                <p>SUGGESTED AMOUNTS</p>
+                <button class="amount-btn">Rs. 1000</button>
+                <button class="amount-btn">Rs. 2000</button>
+                <button class="amount-btn">Rs. 3000</button>
+                <button class="amount-btn">Rs. 4000</button>
+                <button class="amount-btn">Rs. 5000</button>
+                <button class="amount-btn">Rs. 6000</button>
+            </div>
+            <label for="custom-amount" class="custom-amount-label">Your donation: Rs.</label>
+            <input type="number" id="custom-amount" name="custom-amount" min="100" max="100000000" value="100">
+        </div>
+
+        <h3>Your billing information</h3>
+        <div class="divider"></div>
+        <form class="billing-form">
+            <label for="billing-name">Billing name</label>
+            <input type="text" id="billing-name" name="billing-name" required>
+
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" required>
+
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" required>
+
+            <label for="state">State</label>
+            <input type="text" id="state" name="state" required>
+
+            <label for="pin">PIN</label>
+            <input type="text" id="pin" name="pin" required>
+
+            <label for="phone">Phone number</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="passport-pan">Passport or PAN number</label>
+            <input type="text" id="passport-pan" name="passport-pan" required>
+
+            <h4><b>You’ll receive email updates from The Nature Conservancy. You can unsubscribe at any time. </b></h4>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="terms" name="terms" required> I agree to the <a href="terms.html" target="_blank">Terms and Conditions</a>.
+            </div>
+
+            <button type="submit" class="submit-btn">Donate Now</button>
+        </form>
+    </div>
+    <div class="addition">
+        <h1 class="underline-animation">Your donation matters!</h1>
+        
+        <div class="text-box">
+            <p><h2>
+                Your donation to "Where it is needed most" allows us to flexibly respond to urgent needs and special projects like our Timber Innovation 
+                Center in Uganda, impacting healthcare, education, and sustainable development. 
+            </h2>
+            </p>
+        </div>
+        <div class="image-box">
+            <img src="index images/donation.png" alt="Donation Screenshot" />
+        </div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Earthly.in. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="terms-of-service.html">Terms of Service</a></li>
+                <li><a href="contact-us.html">Contact Us</a></li>
+            </ul>
+            <div class="social-icons">
+                <a href="https://t.me/yourusername" target="_blank" class="social-icon">
+                    <i class="fab fa-telegram-plane"></i>
+                </a>
+                <a href="https://www.instagram.com/yourusername" target="_blank" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/yourusername" target="_blank" class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.snapchat.com/add/yourusername" target="_blank" class="social-icon">
+                    <i class="fab fa-snapchat-ghost"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        window.addEventListener('scroll', function() {
+const navbar = document.getElementById('navbar');
+if (window.scrollY > 0) {
+    navbar.style.display = 'flex';
+    navbar.style.backgroundColor = '#011F35'; // Change to black on scroll
+} else {
+    navbar.style.display = 'flex'; // Keep the navbar visible
+    navbar.style.backgroundColor = 'transparent'; // Revert to transparent if desired
+}
+});
+        document.addEventListener('DOMContentLoaded', function () {
+            const element = document.querySelector('.underline-animation');
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show-underline');
+                    }
+                });
+            });
+
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
+
+
+<!--On Mon, 5 Aug 2024 at 13:14, Astha Mishra <astha28february@gmail.com> wrote:
+Ye waala <head> mein daal dena nhi to footer ke icons nahi aayenge:
+//TO BE INCLUDED IN HEAD
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+//CODE FOR NAVBAR
+
+
+<nav id="navbar">
+        <div class="navbar-logo">
+            <img src="index images/logo.png" alt="Earthly.in Logo">
+            <span>Earthly.in</span>
+        </div>
+        <ul class="navbar-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="create an impact.html">Create an Impact</a></li>
+            <li><a href="what we do.html">What We Do</a></li>
+            <li><a href="earthly events.html">Earthly Events</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="review.html">Reviews</a></li>
+            <li><a href="contact us.html">Contact Us</a></li>
+        </ul>
+        <button class="donate-button">DONATE</button>
+    </nav>
+
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #0D546A;
+}
+
+/* Present in all pages*/
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent; 
+    color: white;
+    display: flex;
+    z-index: 1000;
+    text-align: center;
+    transition: background-color 0.3s; 
+}
+
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo img {
+    height: 45px;
+    margin-right: 0;
+}
+
+.navbar-logo span {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.navbar-links {
+    flex: 1;
+    text-align: right;
+}
+
+.navbar-links li {
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+
+.navbar-links li a{
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+}
+.navbar-links li::after{
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: #F9C30D;
+    display: block;
+    margin: auto;
+    transition: .5s;    
+}
+.navbar-links li:hover::after{
+    width: 100%;
+}
+.donate-button {
+    background-color: transparent;
+    color: white;
+    border: 1.5px solid white;
+    padding: 5px 15px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    
+}
+
+.donate-button:hover {
+    background-color: #F9C30D;
+    transform: scale(1.05);
+}
+
+.message-above-header {
+    text-align: center;
+    
+
+}
+
+.top {
+    position: relative;
+    text-align: center;
+    color: black;
+    padding-bottom: 20px;
+}
+
+
+
+.header-text1 {
+    
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 49px;
+       
+}
+
+.header-text2 {
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    font-weight: bold;
+}
+
+
+
+window.addEventListener('scroll', function() {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 0) {
+        navbar.style.display = 'flex';
+        navbar.style.backgroundColor = '#011F35'; // Change to black on scroll
+    } else {
+        navbar.style.display = 'flex'; // Keep the navbar visible
+        navbar.style.backgroundColor = 'transparent'; // Revert to transparent if desired
+    }
+}); -->
+
